@@ -1,23 +1,29 @@
-import Head from 'next/head';
 import Link from 'next/link';
 import styles from '../styles/Home.module.css';
 
+const buttonStyle = {width: "400px", textAlign: "center", padding: "8px", border: "1px solid", cursor: "pointer", marginBottom: "4px"}
+
 export default function Home() {
+
   return (
     <div className={styles.container}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
 
       <main>
-        <h1 className={styles.title}>
+        <h1>
           Solitaire Daily
         </h1>
 
-        <Link href="/solitaire">
-          {"Play solitaire"}
-        </Link>
+        <div>
+
+          <Link href="/solitaire">
+            <div style={buttonStyle}>{"Play solitaire"}</div>
+          </Link>
+
+          <Link href="/spider">
+            <div style={buttonStyle}>{"Play spider solitaire"}</div>
+          </Link>
+        </div>
+
 
       </main>
     </div>
