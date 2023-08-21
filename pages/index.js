@@ -22,6 +22,10 @@ export default function Home() {
           <Link href="/spider">
             <div style={buttonStyle}>{"Play spider solitaire"}</div>
           </Link>
+
+          <Link href="/mahjong">
+            <div style={buttonStyle}>{"Play mahjong"}</div>
+          </Link>
         </div>
 
 
