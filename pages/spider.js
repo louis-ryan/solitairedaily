@@ -593,65 +593,65 @@ export default function SpiderNew() {
         // }
 
 
-        function HighScores() {
-            if (typeof (Storage) !== "undefined") {
-                var scores = false;
-                if (localStorage["highScores"]) {
-                    highScores.style.display = "block";
-                    highScores.innerHTML = '';
-                    scores = JSON.parse(localStorage["highScores"]);
-                    scores = scores.sort(function (a, b) { return parseInt(a) - parseInt(b) });
+        // function HighScores() {
+        //     if (typeof (Storage) !== "undefined") {
+        //         var scores = false;
+        //         if (localStorage["highScores"]) {
+        //             highScores.style.display = "block";
+        //             highScores.innerHTML = '';
+        //             scores = JSON.parse(localStorage["highScores"]);
+        //             scores = scores.sort(function (a, b) { return parseInt(a) - parseInt(b) });
 
-                    for (var i = 0; i < 10; i++) {
-                        var s = scores[i];
+        //             for (var i = 0; i < 10; i++) {
+        //                 var s = scores[i];
 
-                        var fragment = document.createElement('li');
-                        fragment.innerHTML = (typeof (s) != "undefined" ? s : "");
-                        highScores.appendChild(fragment);
-                        console.log(highScores);
-                    }
-                }
-            }
-            else {
-                highScores.style.display = "none";
-            }
-        }
+        //                 var fragment = document.createElement('li');
+        //                 fragment.innerHTML = (typeof (s) != "undefined" ? s : "");
+        //                 highScores.appendChild(fragment);
+        //                 console.log(highScores);
+        //             }
+        //         }
+        //     }
+        //     else {
+        //         highScores.style.display = "none";
+        //     }
+        // }
 
 
-        HighScores();
+        // HighScores();
 
-        function UpdateScore() {
-            if (typeof (Storage) !== "undefined") {
-                var current = parseInt(moves.innerHTML); //moves=score
-                var scores = false;
-                if (localStorage["highScores"]) {
+        // function UpdateScore() {
+        //     if (typeof (Storage) !== "undefined") {
+        //         var current = parseInt(moves.innerHTML); //moves=score
+        //         var scores = false;
+        //         if (localStorage["highScores"]) {
 
-                    scores = JSON.parse(localStorage["highScores"]);
-                    scores = scores.sort(function (a, b) { return parseInt(a) - parseInt(b) });
+        //             scores = JSON.parse(localStorage["highScores"]);
+        //             scores = scores.sort(function (a, b) { return parseInt(a) - parseInt(b) });
 
-                    for (var i = 0; i < 10; i++) {
-                        var s = parseInt(scores[i]);
+        //             for (var i = 0; i < 10; i++) {
+        //                 var s = parseInt(scores[i]);
 
-                        var val = (!isNaN(s) ? s : 0);
-                        if (current > val) {
-                            val = current;
-                            scores.splice(i, 0, parseInt(current));
-                            break;
-                        }
-                    }
+        //                 var val = (!isNaN(s) ? s : 0);
+        //                 if (current > val) {
+        //                     val = current;
+        //                     scores.splice(i, 0, parseInt(current));
+        //                     break;
+        //                 }
+        //             }
 
-                    scores.length = 10;
-                    localStorage["highScores"] = JSON.stringify(scores);
+        //             scores.length = 10;
+        //             localStorage["highScores"] = JSON.stringify(scores);
 
-                } else {
-                    var scores = new Array();
-                    scores[0] = current;
-                    localStorage["highScores"] = JSON.stringify(scores);
-                }
+        //         } else {
+        //             var scores = new Array();
+        //             scores[0] = current;
+        //             localStorage["highScores"] = JSON.stringify(scores);
+        //         }
 
-                HighScores();
-            }
-        }
+        //         HighScores();
+        //     }
+        // }
 
 
 
@@ -886,7 +886,7 @@ export default function SpiderNew() {
 
             <div class="control-panel opaque">
                 <button class="btn-hint">Hint</button>
-                <button class="btn-new">Restart Game</button>
+                <button class="btn-new" style={{width: "200px"}}>Restart Game</button>
                 {/* <button
                     class="btnFaq"
                     onClick={() => dealer.showFaq()}>

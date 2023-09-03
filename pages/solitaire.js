@@ -461,6 +461,9 @@ export default function Solitaire() {
 
         function renderBoard() {
             // console.log("html: ", document.body.innerHTML)
+
+            if (!document.getElementById("gameContainer")) return
+            
             document.getElementById("gameContainer").innerHTML = '';
             var outerBoard = document.createElement('div');
             outerBoard.className = 'board clear light';

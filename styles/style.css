@@ -66,36 +66,32 @@ body {
 }
 
 .start-form {
-	width: 800px;
+	width: 600px;
 	height: 520px;
 	display: block;
 	box-sizing: border-box; /*padding and border included in total height and width*/
 	margin-top: 100px;
 	padding: 20px 25px;
-	background-color: #E7E7E7;
-	border: 5px solid #074744;
-	font-family: Georgia, serif;
-	box-shadow: 0 0 12px 5px rgba(0,0,0,0.6);
 	left: 50%;
 	top: 50%;
 	transform: translate(-50%,-75%);
 	position: absolute;
 	display: none;
+	color: white
 }
 
 input[type=radio] {
 	border: 0px;
 	width: 25px;
 	height: 25px;
-
+	cursor: pointer;
+	margin-right: 16px;
 }
 
 .start-form .title {
 	margin-top: 20px;
 	margin-bottom: 50px;
 	font-size: 32px;
-	text-align: center;
-	font-weight: bold;
 }
 
 .start-form .game-option{
@@ -104,18 +100,10 @@ input[type=radio] {
 	font-size: 30px;
 	height: 70px;
 	line-height: 70px;
-	cursor: pointer;
-	margin-left: 40px;
-}
-
-.start-form .game-option:hover, .start-form .game-option:active {
-	background: #045c58;
-	color: #e7e7e7;
 }
 
 .start-form input[type="submit"] {
-	width: 200px;
-	height: 52px;
+	width: 100%;
 	margin-top: 5px;
 	font-size: 28px;
 	cursor: pointer;
@@ -123,14 +111,10 @@ input[type=radio] {
 	margin-left: 50%;
 	margin-top: 20px;
 	transform: translate(-50%, 0);
-	background: #021615;
-	color: #E7E7E7;
-	border-radius: 5px;
-	box-shadow: 0px 13px 24px 6px rgba(0,0,0,0.79);
-}
-
-.start-form input[type="submit"]:hover {
-	background: #045c58;;
+	background: white;
+	color: black;
+	border-radius: 8px;
+	padding: 16px
 }
 
 
