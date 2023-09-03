@@ -31,14 +31,6 @@ export default function Solitaire() {
     const [environment, setEnvironment] = useState("RENDER_BOARD")
 
 
-    useEffect(() => {
-        var refuseCard = document.getElementsByClassName("cd f");
-
-
-       console.log("refuse: ", refuseCard)
-    })
-
-
 
 
 
@@ -138,7 +130,29 @@ export default function Solitaire() {
                 }
             }
 
-            return `<div class="card open ${s}1${twoDigNum()}" style="border-radius: 6px"></div>`;
+            return `
+                <div
+                    style="
+                        border: 1px solid black;
+                        border-radius: 6px;
+                        overflow: hidden;
+                        height: 116px;
+                        width: 84px; 
+                    "
+                >
+                    <div 
+                        class="card open ${s}1${twoDigNum()}" 
+                        style="
+                            border-radius: 6px; 
+                            filter: blur(0.4px);
+                            border: none;
+                            height: 118px;
+                            width: 86px; 
+                        "
+                    >
+                    </div>
+                </div>
+            `;
         }
 
         window.onhashchange = function (e) {
@@ -186,6 +200,7 @@ export default function Solitaire() {
         });
 
         function renderCard(data, extraClass) {
+
             var newCard = document.createElement('div');
             newCard.data = data;
             newCard.className = 'cd ';
@@ -463,7 +478,7 @@ export default function Solitaire() {
             // console.log("html: ", document.body.innerHTML)
 
             if (!document.getElementById("gameContainer")) return
-            
+
             document.getElementById("gameContainer").innerHTML = '';
             var outerBoard = document.createElement('div');
             outerBoard.className = 'board clear light';
@@ -500,10 +515,20 @@ export default function Solitaire() {
             refuse.id = 'refuse';
 
 
+            refuse.style.display = "none"
+
+            setTimeout(() => {
+                refuse.style.display = "unset"
+            }, 100)
+
+
 
             for (var r = 0; r < currentGame.refuse.length; r++) {
+
                 refuse.appendChild(renderCard(currentGame.refuse[r], (shouldAnimate && r === currentGame.refuse.length - 1 ? ' slide' : null)));
             }
+
+
             board.appendChild(refuse);
             board.appendChild(closets);
             var stacks = document.createElement('div');
