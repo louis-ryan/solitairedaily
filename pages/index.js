@@ -1,53 +1,14 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router';
-import Link from 'next/link';
-import styles from '../styles/Home.module.css';
 
-import Solitaire from './solitaire.js';
-
-const buttonStyle = {width: "400px", textAlign: "center", padding: "8px", border: "1px solid", cursor: "pointer", marginBottom: "4px"}
-
-export default function Home() {
-
+const Home = () => {
   const router = useRouter();
-  const { route } = router.query;
 
-  let Game
+  useEffect(() => {
+    router.replace('/solitaire'); // Replace '/your-target-route' with your desired path.
+  }, []);
 
-  if (route?.[0] === 'solitaire') {
-    Game = Solitaire;
-  } else if (route?.[0] === 'spider') {
-    Game = UserPosts;
-  }
+  return null; // Or a loading spinner if you want to show something briefly
+};
 
-  return (
-    <div className={styles.container}>
-
-      <main>
-        <h1>
-          Solitaire Daily
-        </h1>
-
-
-
-        <div>
-
-          <Link href="/solitaire">
-            <div style={buttonStyle}>{"Play solitaire"}</div>
-          </Link>
-
-          <Link href="/spider">
-            <div style={buttonStyle}>{"Play spider solitaire"}</div>
-          </Link>
-
-          <Link href="/mahjong">
-            <div style={buttonStyle}>{"Play mahjong"}</div>
-          </Link>
-        </div>
-
-
-        {Game ? <Game /> : <h3>Please select a User section.</h3>}
-
-      </main>
-    </div>
-  )
-}
+export default Home;
