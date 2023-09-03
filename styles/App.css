@@ -1,13 +1,9 @@
 .App {
   text-align: center;
   position: relative;
-  width: 100vw;
-  height: 100vh;
 }
 .boardcontainer{
   position: relative;
-  width: 100vw;
-  height: 100vh;
 }
 .tile{
   display: inline-block;

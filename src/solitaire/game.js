@@ -1,48 +1,14 @@
 'use client'
 
 import Head from 'next/head';
-import { useState, useEffect } from "react";
-
-import Layout from './layout';
-
-
-const StartBoard = () => {
-
-    return (
-
-        <div id="start-container" class="start-container">
-            <h1>Solitaire</h1>
-            <button id="startnew">New game</button>
-
-            {/**
-          * ADD GET COOKIE
-          */}
-
-            <button id="resume-game" class="resumer">Resume previous</button>
-        </div>
-
-    )
-}
-
+import { useEffect } from "react";
 
 export default function Solitaire() {
 
-
-    const [environment, setEnvironment] = useState("RENDER_BOARD")
-
-
     useEffect(() => {
-        var refuseCard = document.getElementsByClassName("cd f");
+        console.log(document.getElementById("gameBoard"))
 
 
-       console.log("refuse: ", refuseCard)
-    })
-
-
-
-
-
-    useEffect(() => {
         var cards = [];
         var suits = ['h', 's', 'c', 'd'];
         var displays = {
@@ -69,7 +35,7 @@ export default function Solitaire() {
             if (getCookie('currentGame') !== null) {
                 currentGame = JSON.parse(getCookie('currentGame'));
             }
-            // document.body.innerHTML = <StartBoard />;
+            document.getElementById("gameBoard").innerHTML = '<div id="start-container" class="start-container"><h1>Solitaire</h1><button id="startnew">New game</button><br>' + (getCookie('currentGame') !== null ? '<button id="resume-game" class="resumer">Resume previous</button>' : '') + '</div>';
         }
 
         function historyPush() {
@@ -127,18 +93,7 @@ export default function Solitaire() {
         }
 
         function cardContents(n, s) {
-
-            console.log("card: ", n, s)
-
-            var twoDigNum = () => {
-                if (n < 10) {
-                    return "0" + n
-                } else {
-                    return n
-                }
-            }
-
-            return `<div class="card open ${s}1${twoDigNum()}" style="border-radius: 6px"></div>`;
+            return '<p>' + (displays['n' + n] ? displays['n' + n] : n) + '</p>' + icons[s] + '<hr/>' + getAllIcons(n, s);
         }
 
         window.onhashchange = function (e) {
@@ -163,7 +118,6 @@ export default function Solitaire() {
         document.addEventListener('click', function (e) {
             if (e.target.id === 'startnew') {
                 startNewGame();
-                setEnvironment("RENDER_BOARD")
                 return false;
             } else if (e.target.id === 'new-game') {
                 if (window.confirm("Close this game and start a new one?")) {
@@ -357,7 +311,6 @@ export default function Solitaire() {
             }
         }
 
-
         function checkIfFinished() {
             var isFinished = true;
             for (var re = 0; re < currentGame.refuse.length; re++) {
@@ -460,18 +413,17 @@ export default function Solitaire() {
         }
 
         function renderBoard() {
-            // console.log("html: ", document.body.innerHTML)
-            document.getElementById("gameContainer").innerHTML = '';
+            document.getElementById("gameBoard").innerHTML = '';
             var outerBoard = document.createElement('div');
             outerBoard.className = 'board clear light';
             outerBoard.id = "gameboard";
             var board = document.createElement('div');
             board.className = 'inner clear';
 
-            // var bottomButtons = document.createElement('div');
-            // bottomButtons.className = 'nav-buttons';
-            // bottomButtons.innerHTML = '<div class="in" style=" top: 800px;"><button id="new-game" class="new">&#xff0b;</button><button id="back-button" class="back">&larr;</button></div>';
-            // board.appendChild(bottomButtons);
+            var bottomButtons = document.createElement('div');
+            bottomButtons.className = 'nav-buttons';
+            bottomButtons.innerHTML = '<div class="in"><button id="new-game" class="new">&#xff0b;</button><div class="toggle"><input type="checkbox" id="color" ' + (getCookie('color') === 'dark' ? 'checked' : '') + '><label for="color"></label></div><button id="back-button" class="back">&larr;</button></div>';
+            board.appendChild(bottomButtons);
 
             var closets = document.createElement('div');
             closets.className = 'closets-area';
@@ -495,9 +447,6 @@ export default function Solitaire() {
             var shouldAnimate = currentRefCard && priorRefCard && (currentRefCard.id !== priorRefCard.id || currentRefCard.folded !== priorRefCard.folded || currentGame.refuse.length !== priorGame.refuse.length);
             refuse.className = 'refuse-pile len' + (currentGame.refuse.length < 25 ? currentGame.refuse.length : ' all') + (shouldAnimate ? ' accordion' : '');
             refuse.id = 'refuse';
-
-
-
             for (var r = 0; r < currentGame.refuse.length; r++) {
                 refuse.appendChild(renderCard(currentGame.refuse[r], (shouldAnimate && r === currentGame.refuse.length - 1 ? ' slide' : null)));
             }
@@ -546,7 +495,7 @@ export default function Solitaire() {
             outerBoard.className = outerBoard.className + ratioClass + (isDesktop ? ' desktop' : ' mobile');
             document.getElementById('metaColor').setAttribute("content", "#" + browserColor);
             document.getElementById('metaWidth').setAttribute("content", "width=" + ratio + ",user-scalable=no");
-            document.getElementById("gameContainer").appendChild(outerBoard);
+            document.body.appendChild(outerBoard);
 
             document.title = hasStarted && currentGame.steps > 0 ? currentGame.steps + ' - Solitaire' : 'Solitaire';
         }
@@ -583,22 +532,17 @@ export default function Solitaire() {
             }
         }
 
-        // renderStartBoard()
-        startNewGame();
-        setEnvironment("RENDER_BOARD")
+        renderStartBoard()
     }, [])
 
 
     return (
-        <Layout>
+        <>
             <Head>
                 <meta name="viewport" id="metaWidth" content="width=530,user-scalable=no" />
                 <meta name="theme-color" id="metaColor" content="#ffffff" />
             </Head>
-
-            {environment === "START_BOARD" && <StartBoard />}
-            <div id="gameContainer" />
-
-        </Layout>
+            <div id="gameBoard"></div>
+        </>
     )
 }

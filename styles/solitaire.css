@@ -111,10 +111,6 @@
     padding-top: 65px;
 }
 
-.board.desktop .inner {
-    width: 535px;
-}
-
 .board.desktop .nav-buttons {
     top: 0;
     bottom: auto;
@@ -217,60 +213,17 @@
     bottom: -25px;
 }
 
-/* dark */
-.board.dark {
-    background-image: linear-gradient(to top, #0f0c0c, #251e1e);
-}
-
-.board.dark .cd.f {
-    background-color: #412020;
-    border-color: #2e2626;
-    background-image: repeating-linear-gradient(55deg, transparent, transparent 18px, #4b3e3e 19px, transparent 20px), repeating-linear-gradient(-55deg, transparent, transparent 18px, #161212 19px, transparent 20px), linear-gradient(to bottom, #221c1c, #4d3e3e);
-}
-
-.board.dark .closet {
-    background-color: #151111;
-}
-
-.board.dark.mobile .nav-buttons .in,
-.board.dark.desktop .nav-buttons {
-    background-color: #302727;
-}
-
-.board.dark .nav-buttons button {
-    background-color: #0f0c0c;
-    color: #999999;
-}
-
-.board.dark .cd.s,
-.board.dark .cd.c {
-    color: #999999;
-    background-color: #181818;
-    background-image: linear-gradient(to bottom, #272727, #373737);
-    border-color: #414141;
-}
-
-.board.dark .cd.h,
-.board.dark .cd.d {
-    color: #ee5555;
-    background-color: #640000;
-    background-image: linear-gradient(to bottom, #580000, #741212);
-    border-color: #740808;
-}
-
-/* light */
-.board.light {
-    color: #4b0707;
-}
-
 .board.light .cd.f {
-    background-color: #999999;
-    border-color: #e9dbdb;
-    background-image: repeating-linear-gradient(55deg, transparent, transparent 18px, #ffffff 19px, transparent 20px), repeating-linear-gradient(-55deg, transparent, transparent 18px, #cccccc 19px, transparent 20px), linear-gradient(to bottom, #d3c2c2, #f0e4e4);
+    background-image: linear-gradient(45deg, rgba(0,0,0,0) 48%, rgba(255,255,255,0.30) 60%, rgba(0,0,0,0) 52%), linear-gradient(-45deg, rgba(0,0,0,0) 48%, rgba(255,255,255,0.25) 60%, rgba(0,0,0,0) 52%);
+    background-size: 13px 17px;
+    background-color: #a83345;
+    border: 1px solid black;
+    border-radius: 6px;
 }
 
 .board.light .closet {
-    background-color: #f6e5e5;
+    border: 1px solid black;
+    border-radius: 6px;
 }
 
 .board.light.mobile .nav-buttons .in,
@@ -284,19 +237,10 @@
 }
 
 .board.light .cd.s,
-.board.light .cd.c {
-    color: #080808;
-    background-color: #ffffff;
-    background-image: linear-gradient(to bottom, #ffffff, #a7a7a7);
-    border-color: #9c9c9c;
-}
-
+.board.light .cd.c,
 .board.light .cd.h,
 .board.light .cd.d {
-    color: #9e0000;
-    background-color: #fde3e3;
-    background-image: linear-gradient(to bottom, #ffe5e5, #ff8787);
-    border-color: #ff6c6c;
+    border: none;
 }
 
 /* end of colors */
@@ -621,19 +565,16 @@ button:hover {
 }
 
 .cd {
-    overflow: hidden;
     font-weight: bold;
-    padding: 3px;
     text-align: right;
-    border: 5px solid #222222;
     margin: 5px;
     float: left;
     width: 80px;
     height: 120px;
-    z-index: 999;
+    /* z-index: 999; */
     cursor: pointer;
     position: relative;
-    border-radius: 3px;
+    border-radius: 4px;
     user-select: none;
 }
 
@@ -700,10 +641,6 @@ button:hover {
     background-image: linear-gradient(#312727, #221c1c);
 }
 
-.board.light .stack {
-    background-image: linear-gradient(#e6dada, #e5d9d9);
-}
-
 .board.mobile.landscape .stack {
     width: 9.5%;
 }
@@ -711,6 +648,7 @@ button:hover {
 .board.desktop .stack,
 .board.mobile.portrait .stack {
     width: 14.2%;
+    height: 400px;
 }
 
 .board.desktop .stacks,
@@ -722,22 +660,20 @@ button:hover {
 
 .stack .cd {
     margin-bottom: 0;
-    margin-left: 9px;
-    margin-top: -50px;
-    box-shadow: 0px -3px 4px 1px rgba(0, 0, 0, 0.25);
+    margin-top: -100px;
     transition: margin-top 0.5s;
 }
 
 .stack .cd.f {
-    margin-top: -80px;
+    margin-top: -100px;
 }
 
 .stack.len8 .cd.f {
-    margin-top: -65px;
+    margin-top: -100px;
 }
 
 .stack.len9 .cd.f {
-    margin-top: -67px;
+    margin-top: -100px;
 }
 
 .stack.len10 .cd.f,
@@ -747,11 +683,11 @@ button:hover {
 .stack.len14 .cd.f,
 .stack.len15 .cd.f,
 .stack.len16 .cd.f {
-    margin-top: -70px;
+    margin-top: -100px;
 }
 
 .cd.f+.cd.a {
-    margin-top: -64px;
+    margin-top: -100px;
 }
 
 .stack .cd.f:first-child,
@@ -794,7 +730,8 @@ button:hover {
     width: 185px;
     float: left;
     padding-top: 50px;
-    padding-left: 2%;
+    padding-left: 58px;
+    position: absolute;
 }
 
 .board.desktop .refuse-pile .cd,
@@ -819,7 +756,6 @@ button:hover {
 .board.mobile.portrait .refuse-pile .cd {
     margin-right: 0;
     margin-top: -50px;
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
 }
 
 .closet {
@@ -827,7 +763,7 @@ button:hover {
     text-align: left;
     border-radius: 2px;
     width: 80px;
-    height: 120px;
+    height: 114px;
     padding: 81px 4px 5px;
     margin-left: 4px;
 }
@@ -848,11 +784,7 @@ button:hover {
 }
 
 .closet .cd {
-    margin: -76px 0 0;
-}
-
-.closet .cd:last-of-type {
-    box-shadow: 0px 0px 4px 1px rgba(0, 0, 0, 0.5);
+    margin: -82px -6px;
 }
 
 .closet>.icon {
@@ -862,7 +794,7 @@ button:hover {
     position: absolute;
     width: 35px;
     line-height: 40px;
-    margin: -58px 0 0 12px;
+    margin: -50px 16px;
     font-size: 40px;
     opacity: 0.5;
 }
@@ -1018,7 +950,7 @@ button:hover {
 
 .board.desktop .refuse-pile .cd.f:first-child,
 .board.mobile.portrait .refuse-pile .cd.f:first-child {
-    margin-left: 0;
+    /* margin-left: 0; */
     position: absolute;
 }
 

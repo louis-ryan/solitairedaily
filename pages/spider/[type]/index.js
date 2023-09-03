@@ -1,6 +1,10 @@
 import { useEffect } from "react";
+import { useRouter } from 'next/router';
+import Layout from "../../layout";
 
 export default function SpiderNew() {
+
+    const router = useRouter();
 
     useEffect(() => {
 
@@ -469,8 +473,16 @@ export default function SpiderNew() {
             e.preventDefault()
 
 
+            console.log("url: ", router.asPath)
+            console.log("button: ", this.radioBtn)
+
+            // const gameType = router.asPath.split("/")[2]
+
+
+            console.log(cardDeck.getValueFromRadioButton(this.radioBtn))
 
             cardDeck.getValueFromRadioButton(this.radioBtn);
+
             cardDeck.init();
             cardDeck.create();
 
@@ -821,29 +833,7 @@ export default function SpiderNew() {
 
     return (
 
-        <>
-            {/* <div class="home-screen">
-
-                <button id="start-btn">
-                    <label>Start Game</label>
-                </button>
-
-                <button id="high-score-btn">High Score</button>
-
-                <div id="scoreBoard" class="score-board">
-                    <h2>Score Board</h2>
-                    Rank    <span style={{ float: "right" }}>Number of Moves</span>
-                    <ol id="high-scores">
-                    </ol>
-                    <div
-                        class="faq-close"
-                        title="close"
-                        onClick={() => dealer.closeScoreBoard()}
-                    >
-
-                    </div>
-                </div>
-            </div> */}
+        <Layout>
 
             <form action="index.html" name="startGame" id="startGame" class="start-form">
                 <div class="title">Choose a Difficulty Level</div>
@@ -942,7 +932,7 @@ export default function SpiderNew() {
 
 
 
-        </>
+        </Layout>
     )
 
 }
