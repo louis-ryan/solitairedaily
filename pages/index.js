@@ -1,35 +1,14 @@
-import Link from 'next/link';
-import styles from '../styles/Home.module.css';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-const buttonStyle = {width: "400px", textAlign: "center", padding: "8px", border: "1px solid", cursor: "pointer", marginBottom: "4px"}
+const Home = () => {
+  const router = useRouter();
 
-export default function Home() {
+  useEffect(() => {
+    router.replace('/solitaire'); // Replace '/your-target-route' with your desired path.
+  }, []);
 
-  return (
-    <div className={styles.container}>
+  return null; // Or a loading spinner if you want to show something briefly
+};
 
-      <main>
-        <h1>
-          Solitaire Daily
-        </h1>
-
-        <div>
-
-          <Link href="/solitaire">
-            <div style={buttonStyle}>{"Play solitaire"}</div>
-          </Link>
-
-          <Link href="/spider">
-            <div style={buttonStyle}>{"Play spider solitaire"}</div>
-          </Link>
-
-          <Link href="/mahjong">
-            <div style={buttonStyle}>{"Play mahjong"}</div>
-          </Link>
-        </div>
-
-
-      </main>
-    </div>
-  )
-}
+export default Home;
