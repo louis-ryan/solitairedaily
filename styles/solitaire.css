@@ -108,7 +108,7 @@
 }
 
 .board.desktop {
-    padding-top: 65px;
+    padding-top: 8px;
 }
 
 .board.desktop .nav-buttons {
@@ -569,8 +569,8 @@ button:hover {
     text-align: right;
     margin: 5px;
     float: left;
-    width: 80px;
-    height: 120px;
+    width: 84px;
+    height: 116px;
     /* z-index: 999; */
     cursor: pointer;
     position: relative;

@@ -1,6 +1,7 @@
 body {
 	overflow: hidden;
-	background-color: #57926b;
+	height: 100vh;
+	background: radial-gradient(circle, rgba(62,48,26,1) 0%, rgba(89,73,49,1) 10%, rgba(89,73,49,1) 83%, rgba(62,48,26,1) 100%);
 }
 
 .home-screen {
@@ -318,11 +319,11 @@ input[type=radio] {
 /*Cards style*/
 .card {
 	display: block;
-	width: 82px;
-	height: 119px;
+	width: 84px;
+	height: 122px;
 	margin: 0 auto;
 	border: 1px solid #000;
-	border-radius: 5px;
+	border-radius: 6px;
 }
 
 .card:first-child {
