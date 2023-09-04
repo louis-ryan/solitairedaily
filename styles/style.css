@@ -1,11 +1,11 @@
 body {
 	overflow: hidden;
 	height: 100vh;
-	background: radial-gradient(circle, rgba(62,48,26,1) 0%, rgba(89,73,49,1) 10%, rgba(89,73,49,1) 83%, rgba(62,48,26,1) 100%);
+	background: radial-gradient(circle, rgba(62, 48, 26, 1) 0%, rgba(89, 73, 49, 1) 10%, rgba(89, 73, 49, 1) 83%, rgba(62, 48, 26, 1) 100%);
 }
 
 .home-screen {
-	background: url('../images/homescreen1.jpg') ;
+	background: url('../images/homescreen1.jpg');
 	/*	display: table;*/
 	width: 1366px;
 	height: 768px;
@@ -70,12 +70,13 @@ body {
 	width: 600px;
 	height: 520px;
 	display: block;
-	box-sizing: border-box; /*padding and border included in total height and width*/
+	box-sizing: border-box;
+	/*padding and border included in total height and width*/
 	margin-top: 100px;
 	padding: 20px 25px;
 	left: 50%;
 	top: 50%;
-	transform: translate(-50%,-75%);
+	transform: translate(-50%, -75%);
 	position: absolute;
 	display: none;
 	color: white
@@ -95,12 +96,18 @@ input[type=radio] {
 	font-size: 32px;
 }
 
-.start-form .game-option{
+.start-form .game-option {
 	display: block;
 	margin-bottom: 20px;
 	font-size: 30px;
 	height: 70px;
 	line-height: 70px;
+	cursor: pointer;
+}
+
+.start-form .game-option:hover {
+	background-color: white;
+	color: black;
 }
 
 .start-form input[type="submit"] {
@@ -182,12 +189,12 @@ input[type=radio] {
 	cursor: pointer;
 }
 
-.control-panel button:hover{
+.control-panel button:hover {
 	background: #074744;
 	color: #e7e7e7;
 }
 
-.timer{
+.timer {
 	font-size: 20px;
 	font-weight: bold;
 	color: #fff;
@@ -238,7 +245,7 @@ input[type=radio] {
 	font-size: 16px;
 	line-height: 1.32;
 	text-align: justify;
-	box-shadow: 0 0 12px 6px rgba(0,0,0,0.8);
+	box-shadow: 0 0 12px 6px rgba(0, 0, 0, 0.8);
 	overflow: scroll;
 	transition: width 2s;
 }
@@ -255,13 +262,13 @@ input[type=radio] {
 	transition-delay: 0s;
 }
 
-.faq.open + .faq-shadow {
+.faq.open+.faq-shadow {
 	left: 50%;
-	background-color: rgba(0,0,0,0.4);
+	background-color: rgba(0, 0, 0, 0.4);
 	transition: background 0.2s linear 0.4s;
 }
 
-.faq-close{
+.faq-close {
 	cursor: pointer;
 }
 
@@ -273,10 +280,10 @@ input[type=radio] {
 	padding: 10px;
 	font-family: Arial, sans-serif;
 	font-size: 36px;
-	transform: rotate(45deg);	
+	transform: rotate(45deg);
 }
 
-.faq h1, 
+.faq h1,
 .faq h2 {
 	font-style: italic;
 	margin-bottom: 0.25em;
@@ -311,7 +318,7 @@ input[type=radio] {
 	font-family: Georgia, serif;
 	color: #E7E7E7;
 	text-align: center;
-	box-shadow: 0 0 12px 5px rgba(0,0,0,0.6);
+	box-shadow: 0 0 12px 5px rgba(0, 0, 0, 0.6);
 	display: none;
 }
 
@@ -320,7 +327,7 @@ input[type=radio] {
 .card {
 	display: block;
 	width: 84px;
-	height: 122px;
+	height: 116px;
 	margin: 0 auto;
 	border: 1px solid #000;
 	border-radius: 6px;
@@ -363,14 +370,14 @@ input[type=radio] {
 }
 
 .column .closed,
-.column .closed + .open {
-	margin-top: -116px;
+.column .closed+.open {
+	margin-top: -100px;
 }
 
 .card.closed {
-	background-image: 
-		linear-gradient(45deg, rgba(0,0,0,0) 48%, rgba(255,255,255,0.30) 60%, rgba(0,0,0,0) 52%),
-		linear-gradient(-45deg, rgba(0,0,0,0) 48%, rgba(255,255,255,0.25) 60%, rgba(0,0,0,0) 52%);
+	background-image:
+		linear-gradient(45deg, rgba(0, 0, 0, 0) 48%, rgba(255, 255, 255, 0.30) 60%, rgba(0, 0, 0, 0) 52%),
+		linear-gradient(-45deg, rgba(0, 0, 0, 0) 48%, rgba(255, 255, 255, 0.25) 60%, rgba(0, 0, 0, 0) 52%);
 	background-size: 13px 17px;
 	background-color: #a83345;
 }
@@ -396,7 +403,7 @@ input[type=radio] {
 
 .source .card {
 	right: 0;
-} 
+}
 
 
 .dropout .card {
@@ -576,11 +583,6 @@ ol li:after {
 	width: -80px;
 	text-align: right;
 	color: blue;
-	
-	
+
+
 }
-
-
-
-
-

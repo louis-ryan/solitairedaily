@@ -30,7 +30,7 @@ class LayoutComponent extends Component{
         let c = 0;
         for(let ls = 0; ls < data.layouts.length; ls++){
 
-            console.log("data: ", data)
+        
             for(let l = 0; l < data.layouts[0].length; l++){
                 for(let r = 0;r < data.layouts[0][l].length; r++){
                     if(tilenoLayout[ls][l][r]!==null){

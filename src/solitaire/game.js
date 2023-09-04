@@ -6,7 +6,6 @@ import { useEffect } from "react";
 export default function Solitaire() {
 
     useEffect(() => {
-        console.log(document.getElementById("gameBoard"))
 
 
         var cards = [];

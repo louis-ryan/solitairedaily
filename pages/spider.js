@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import Layout from "./layout";
 
 export default function SpiderNew() {
 
     const router = useRouter();
+
+
+    const [selectedBtn, setSelectedBtn] = useState("1")
+
 
     useEffect(() => {
 
@@ -838,7 +842,7 @@ export default function SpiderNew() {
             <form action="index.html" name="startGame" id="startGame" class="start-form">
                 <div class="title">Choose a Difficulty Level</div>
                 <label class="game-option">
-                    <input type="radio" name="radioBtn" value="1" checked />
+                    <input type="radio" name="radioBtn" value="1" />
                     <span class="suit one">One suit</span>
                 </label>
                 <label class="game-option">
@@ -886,7 +890,7 @@ export default function SpiderNew() {
 
             <div class="control-panel opaque">
                 <button class="btn-hint">Hint</button>
-                <button class="btn-new" style={{width: "200px"}}>Restart Game</button>
+                <button class="btn-new" style={{ width: "200px" }}>Restart Game</button>
                 {/* <button
                     class="btnFaq"
                     onClick={() => dealer.showFaq()}>
