@@ -25,13 +25,22 @@ const StartBoard = () => {
 }
 
 
-export default function Solitaire() {
+const Solitaire = () => {
 
 
     const [environment, setEnvironment] = useState("RENDER_BOARD")
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
 
+    const handleResize = () => {
+        setWindowWidth(window.innerWidth);
+    };
 
+
+    useEffect(() => {
+        window.addEventListener('resize', handleResize);
+        return () => { window.removeEventListener('resize', handleResize) };
+    }, []);
 
 
     useEffect(() => {
@@ -120,8 +129,6 @@ export default function Solitaire() {
 
         function cardContents(n, s) {
 
-            console.log("card: ", n, s)
-
             var twoDigNum = () => {
                 if (n < 10) {
                     return "0" + n
@@ -144,7 +151,7 @@ export default function Solitaire() {
                         class="card open ${s}1${twoDigNum()}" 
                         style="
                             border-radius: 6px; 
-                            filter: blur(0.4px);
+                            filter: blur(0px);
                             border: none;
                             height: 118px;
                             width: 86px; 
@@ -267,10 +274,12 @@ export default function Solitaire() {
         }
 
         function moveDrag(e, lastPosX, lastPosY) {
+
             if (activeCards.length > 0) {
                 var left = lastPosX - 30;
                 var top = lastPosY + 15;
-                var zIndex = 999999;
+                var zIndex = 100;
+
                 for (var ac = 0; ac < activeCards.length; ac++) {
                     activeCards[ac].style = 'position: fixed; z-index: ' + zIndex + '; left: ' + left + 'px; top: ' + top + 'px';
                     top = top + 20;
@@ -630,3 +639,5 @@ export default function Solitaire() {
         </Layout>
     )
 }
+
+export default Solitaire;
