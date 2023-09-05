@@ -5,10 +5,10 @@ const Home = () => {
   const router = useRouter();
 
   useEffect(() => {
-    router.replace('/solitaire'); // Replace '/your-target-route' with your desired path.
+    router.replace('/solitaire');
   }, []);
 
-  return null; // Or a loading spinner if you want to show something briefly
+  return null;
 };
 
 export default Home;

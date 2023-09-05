@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from 'next/router';
 import Layout from "./layout";
+import Head from "next/head";
 
 export default function SpiderNew() {
 
     const router = useRouter();
-
-
-    const [selectedBtn, setSelectedBtn] = useState("1")
 
 
     useEffect(() => {
@@ -829,9 +827,12 @@ export default function SpiderNew() {
             };
         }
 
-        draw();
+        setTimeout(() => { draw() }, 1000)
 
     }, [])
+
+
+    var buttonChecked = true
 
 
 
@@ -842,15 +843,15 @@ export default function SpiderNew() {
             <form action="index.html" name="startGame" id="startGame" class="start-form">
                 <div class="title">Choose a Difficulty Level</div>
                 <label class="game-option">
-                    <input type="radio" name="radioBtn" value="1" />
+                    <input type="radio" name="radioBtn" value="1" checked={buttonChecked} style={{ filter: "invert(1) blur(1px)" }} />
                     <span class="suit one">One suit</span>
                 </label>
                 <label class="game-option">
-                    <input type="radio" name="radioBtn" value="2" />
+                    <input type="radio" name="radioBtn" value="2" style={{ filter: "invert(1) blur(1px)" }} onClick={() => buttonChecked = false} />
                     <span class="suit two">Two suits</span>
                 </label>
                 <label class="game-option">
-                    <input type="radio" name="radioBtn" value="4" />
+                    <input type="radio" name="radioBtn" value="4" style={{ filter: "invert(1) blur(1px)" }} onClick={() => buttonChecked = false} />
                     <span class="suit four">Four suits</span>
                 </label>
                 <input type="submit" value="Play" />
