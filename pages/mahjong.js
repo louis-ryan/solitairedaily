@@ -1,3 +1,4 @@
+import Head from 'next/head';
 import LayoutComponent from '../src/mahjong/LayoutComponent';
 import Layout from './layout';
 

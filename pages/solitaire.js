@@ -187,10 +187,7 @@ const Solitaire = () => {
                 setEnvironment("RENDER_BOARD")
                 return false;
             } else if (e.target.id === 'new-game') {
-                if (window.confirm("Close this game and start a new one?")) {
-                    startNewGame();
-                }
-                return false;
+                startNewGame();
             } else if (e.target.id === 'resume-game') {
                 historyPush();
                 return false;
@@ -495,10 +492,10 @@ const Solitaire = () => {
             var board = document.createElement('div');
             board.className = 'inner clear';
 
-            // var bottomButtons = document.createElement('div');
-            // bottomButtons.className = 'nav-buttons';
-            // bottomButtons.innerHTML = '<div class="in" style=" top: 800px;"><button id="new-game" class="new">&#xff0b;</button><button id="back-button" class="back">&larr;</button></div>';
-            // board.appendChild(bottomButtons);
+            var bottomButtons = document.createElement('div');
+            bottomButtons.className = 'nav-buttons';
+            bottomButtons.innerHTML = '<div class="in" style=" top: 90vh;"><button id="new-game" class="new">&#xff0b;</button><button id="back-button" class="back">&larr;</button></div>';
+            board.appendChild(bottomButtons);
 
             var closets = document.createElement('div');
             closets.className = 'closets-area';
