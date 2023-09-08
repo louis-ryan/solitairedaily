@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import Design from '../images/design-full-hidden.png'
-import Logo from '../images/Logo.png'
 import AdComponent from './AdComponent';
 
 
@@ -12,8 +11,8 @@ const buttonStyle = { textAlign: "center", padding: "8px", cursor: "pointer", ma
 const bottomSectionWrapper = { width: "100%", display: "flex", filter: "blur(0.5)" }
 
 const adSpace = { width: "32px" }
-const adWrapper = { width: "332px", display: "flex", justifyContent: "center" }
-const ad = { backgroundColor: "white", width: "300px", height: "80vh" }
+const adWrapper = { width: "332px", display: "flex", justifyContent: "center", alignItems: "center" }
+const ad = { width: "300px", height: "80vh" }
 
 const gameWrapper1ad = { width: "calc(100vw - (332px + 32px))", borderRadius: "100px", height: "80vh" }
 const gameWrapper2ad = { width: "calc(100vw - (332px * 2))", borderRadius: "100px", height: "80vh" }
