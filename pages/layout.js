@@ -49,7 +49,7 @@ const Layout = ({ children }) => {
         if (path === "/spider") {
             setNumAds(1)
         } else if (path.includes("/solitaire")) {
-            setNumAds(2)
+            setNumAds(1)
         } else {
             setNumAds(2)
         }

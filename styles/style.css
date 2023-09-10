@@ -322,8 +322,8 @@ input[type=radio] {
 /*Cards style*/
 .card {
 	display: block;
-	width: 84px;
-	height: 116px;
+	width: 100px;
+	height: 145.2px;
 	margin: 0 auto;
 	border: 1px solid #000;
 	border-radius: 6px;

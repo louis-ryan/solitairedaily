@@ -30,6 +30,12 @@ const Solitaire = () => {
 
     const [environment, setEnvironment] = useState("RENDER_BOARD")
     const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    const [oneMouseDown, setOneMouseDown] = useState({})
+    const [clickedOnce, setClickedOnce] = useState(false)
+
+    var currentGame = {};
+    var priorGame = {};
+
 
 
     const handleResize = () => {
@@ -41,6 +47,34 @@ const Solitaire = () => {
         window.addEventListener('resize', handleResize);
         return () => { window.removeEventListener('resize', handleResize) };
     }, []);
+
+
+
+    useEffect(() => {
+
+        if (oneMouseDown === {}) return
+
+        document.onmousedown = function () {
+            setClickedOnce(true)
+            setTimeout(() => { setClickedOnce(false); return }, 500)
+        }
+
+        if (clickedOnce === false) return
+
+        // document.onmousedown = function () {
+
+
+
+
+
+
+        setTimeout(() => {
+            setOneMouseDown({})
+        }, 500)
+    })
+
+
+
 
 
     useEffect(() => {
@@ -62,8 +96,8 @@ const Solitaire = () => {
         var lastLocation = {};
         var activeCards = [];
 
-        var currentGame = {};
-        var priorGame = {};
+
+
         var hasStarted = false;
 
         function renderStartBoard() {
@@ -137,29 +171,7 @@ const Solitaire = () => {
                 }
             }
 
-            return `
-                <div
-                    style="
-                        border: 1px solid black;
-                        border-radius: 6px;
-                        overflow: hidden;
-                        height: 116px;
-                        width: 84px; 
-                    "
-                >
-                    <div 
-                        class="card open ${s}1${twoDigNum()}" 
-                        style="
-                            border-radius: 6px; 
-                            filter: blur(0px);
-                            border: none;
-                            height: 118px;
-                            width: 86px; 
-                        "
-                    >
-                    </div>
-                </div>
-            `;
+            return `<div class="card open ${s}1${twoDigNum()}" />`;
         }
 
         window.onhashchange = function (e) {
@@ -205,6 +217,8 @@ const Solitaire = () => {
 
         function renderCard(data, extraClass) {
 
+            var clicked = 0
+
             var newCard = document.createElement('div');
             newCard.data = data;
             newCard.className = 'cd ';
@@ -226,7 +240,18 @@ const Solitaire = () => {
                 return false;
             };
             newCard.onmousedown = function (e) {
-                startDrag(e);
+
+                clicked++
+
+                setTimeout(() => { clicked = 0 }, 500)
+
+                if (clicked > 1) {
+                    quickFix(e)
+                } else {
+                    setTimeout(() => { startDrag(e) }, 100);
+                }
+
+
             };
             newCard.onmousemove = function (e) {
                 var lastPosX = e.clientX;
@@ -245,6 +270,64 @@ const Solitaire = () => {
                 newCard.innerHTML = cardContents(data.n, data.s);
             }
             return newCard;
+        }
+
+        function quickFix(e) {
+
+            // console.log("e: ", e.target.data)
+
+            var closets = [...document.getElementsByClassName("closet")]
+
+
+            var heartClos = []
+            var diamondClos = []
+            var clubsClos = []
+            var spadesClos = []
+
+            closets.forEach((closet) => {
+
+                var nodes = [...closet.childNodes]
+
+                nodes.forEach((node) => {
+                    var suit = node.className.split(" ")[1]
+
+                    if (suit === "h") { heartClos.push(node) }
+                    if (suit === "d") { diamondClos.push(node) }
+                    if (suit === "c") { clubsClos.push(node) }
+                    if (suit === "s") { spadesClos.push(node) }
+                })
+
+            })
+
+            // console.log("h: ", heartClos.length, "d: ", diamondClos.length, "c: ", clubsClos.length, "s: ", spadesClos.length)
+
+            var thisCard = e.target.data
+
+
+            if (thisCard.s === "s" && thisCard.n === spadesClos?.length + 1) {
+                // console.log("ONE FOR SPADES")
+                closets[3].appendChild(e.target)
+                stopDrag(e, 492, 153, e.target.data.n === 1 ? "blank" : 0);
+            }
+
+            if (thisCard.s === "d" && thisCard.n === diamondClos?.length + 1) {
+                // console.log("ONE FOR DIAMONDS")
+                closets[1].appendChild(e.target)
+                stopDrag(e, 665, 155, e.target.data.n === 1 ? "blank" : 0);
+            }
+
+            if (thisCard.s === "c" && thisCard.n === clubsClos?.length + 1) {
+                // console.log("ONE FOR CLUBS")
+                closets[0].appendChild(e.target)
+                stopDrag(e, 766, 189, e.target.data.n === 1 ? "blank" : 0);
+            }
+
+            if (thisCard.s === "h" && thisCard.n === heartClos?.length + 1) {
+                // console.log("ONE FOR HEARTS")
+                closets[2].appendChild(e.target)
+                stopDrag(e, 579, 154, e.target.data.n === 1 ? "blank" : 0);
+            }
+
         }
 
         function startDrag(e) {
@@ -285,7 +368,9 @@ const Solitaire = () => {
             }
         }
 
-        function stopDrag(e, lastPosX, lastPosY) {
+        function stopDrag(e, lastPosX, lastPosY, closetStatus) {
+
+            // console.log("x: ", lastPosX, "y: ", lastPosY)
             var accepterNode = null;
             var giverNode = lastLocation.id;
 
@@ -307,7 +392,7 @@ const Solitaire = () => {
                     var aY1 = aY0 + accepter.offsetHeight;
 
                     var isStack = accepter.className.indexOf('stack') > -1 && accepter.children.length === 0;
-                    var isCloset = accepter.className.indexOf('closet') > -1 && accepter.children.length === 1;
+                    var isCloset = (accepter.className.indexOf('closet') > -1 && accepter.children.length === 1) || closetStatus === "blank";
                     var isStackCard = accepter.parentNode.className.indexOf('stack') > -1;
                     var isClosetCard = accepter.parentNode.className.indexOf('closet') > -1;
 
@@ -319,6 +404,10 @@ const Solitaire = () => {
                                 break;
                             }
                         } else if (isCloset) {
+
+                            // console.log("no card: ", accepter)
+
+
                             var accepterSuit = accepter.getAttribute('data-suit');
                             if (accepterSuit === movingSuit && movingNum === 1 && activeCards.length === 1) {
                                 accepterNode = currentGame.closets[accepter.id];
@@ -326,6 +415,9 @@ const Solitaire = () => {
                                 break;
                             }
                         } else if (isClosetCard) {
+
+                            console.log("card: ", accepter)
+
                             var accepterSuit = accepter.data.s;
                             var accepterNum = accepter.data.n;
                             if (accepterSuit === movingSuit && accepterNum + 1 === movingNum && activeCards.length === 1) {
@@ -583,6 +675,8 @@ const Solitaire = () => {
             document.getElementById("gameContainer").appendChild(outerBoard);
 
             document.title = hasStarted && currentGame.steps > 0 ? currentGame.steps + ' - Solitaire' : 'Solitaire';
+
+            // setCards([...document.getElementsByClassName("cd")])
         }
 
         function clearBoard(cards) {
