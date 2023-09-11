@@ -103,7 +103,6 @@
 .board .inner {
     width: 800px;
     max-width: 100%;
-    padding: 20px 0 10px 0;
     margin: auto;
 }
 
@@ -664,20 +663,20 @@ button:hover {
 
 .stack .cd {
     margin-bottom: 0;
-    margin-top: -100px;
+    margin-top: -124px;
     transition: margin-top 0.5s;
 }
 
 .stack .cd.f {
-    margin-top: -100px;
+    margin-top: -116px;
 }
 
 .stack.len8 .cd.f {
-    margin-top: -100px;
+    margin-top: -120px;
 }
 
 .stack.len9 .cd.f {
-    margin-top: -100px;
+    margin-top: -124px;
 }
 
 .stack.len10 .cd.f,
@@ -687,11 +686,11 @@ button:hover {
 .stack.len14 .cd.f,
 .stack.len15 .cd.f,
 .stack.len16 .cd.f {
-    margin-top: -100px;
+    margin-top: -132px;
 }
 
 .cd.f+.cd.a {
-    margin-top: -100px;
+    margin-top: -124px;
 }
 
 .stack .cd.f:first-child,
@@ -766,8 +765,8 @@ button:hover {
     float: right;
     text-align: left;
     border-radius: 2px;
-    width: 80px;
-    height: 114px;
+    width: 100px;
+    height: 145.2px;
     padding: 81px 4px 5px;
     margin-left: 4px;
 }
@@ -798,7 +797,7 @@ button:hover {
     position: absolute;
     width: 35px;
     line-height: 40px;
-    margin: -50px 16px;
+    margin: -30px 28px;
     font-size: 40px;
     opacity: 0.5;
 }

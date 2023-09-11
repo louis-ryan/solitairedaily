@@ -278,54 +278,75 @@ const Solitaire = () => {
 
             var closets = [...document.getElementsByClassName("closet")]
 
-
             var heartClos = []
             var diamondClos = []
             var clubsClos = []
             var spadesClos = []
+
+            var heartCoords = {}
+            var diamondCoords = {}
+            var clubsCoords = {}
+            var spadesCoords = {}
 
             closets.forEach((closet) => {
 
                 var nodes = [...closet.childNodes]
 
                 nodes.forEach((node) => {
+
                     var suit = node.className.split(" ")[1]
 
-                    if (suit === "h") { heartClos.push(node) }
-                    if (suit === "d") { diamondClos.push(node) }
-                    if (suit === "c") { clubsClos.push(node) }
-                    if (suit === "s") { spadesClos.push(node) }
+                    if (suit === "heart") {
+                        heartClos.push(node)
+                        heartCoords = {x: node.getBoundingClientRect().x, y: node.getBoundingClientRect().y}
+                    }
+                    if (suit === "diamond") {
+                        diamondClos.push(node)
+                        diamondCoords = {x: node.getBoundingClientRect().x, y: node.getBoundingClientRect().y}
+                    }
+                    if (suit === "club") {
+                        clubsClos.push(node)
+                        clubsCoords = {x: node.getBoundingClientRect().x, y: node.getBoundingClientRect().y}
+                    }
+                    if (suit === "spade") {
+                        spadesClos.push(node)
+                        spadesCoords = {x: node.getBoundingClientRect().x, y: node.getBoundingClientRect().y}
+                    }
                 })
-
             })
+
+            console.log("heart: ", heartClos)
+            console.log("spade: ", spadesClos)
+            console.log("diamond: ", diamondClos)
+            console.log("clubs: ", clubsClos)
 
             // console.log("h: ", heartClos.length, "d: ", diamondClos.length, "c: ", clubsClos.length, "s: ", spadesClos.length)
 
             var thisCard = e.target.data
 
 
-            if (thisCard.s === "s" && thisCard.n === spadesClos?.length + 1) {
-                // console.log("ONE FOR SPADES")
-                closets[3].appendChild(e.target)
-                stopDrag(e, 492, 153, e.target.data.n === 1 ? "blank" : 0);
+            if (thisCard.s === "s") {
+                console.log("ONE FOR SPADES")
+                spadesClos.push(e.target)
+                stopDrag(e, spadesCoords.x, spadesCoords.y, e.target.data.n === 1 ? "blank" : 0);
             }
 
-            if (thisCard.s === "d" && thisCard.n === diamondClos?.length + 1) {
-                // console.log("ONE FOR DIAMONDS")
-                closets[1].appendChild(e.target)
-                stopDrag(e, 665, 155, e.target.data.n === 1 ? "blank" : 0);
+            if (thisCard.s === "d") {
+                console.log("ONE FOR DIAMONDS")
+                diamondClos.push(e.target)
+                stopDrag(e, diamondCoords.x, diamondCoords.y, e.target.data.n === 1 ? "blank" : 0);
             }
 
-            if (thisCard.s === "c" && thisCard.n === clubsClos?.length + 1) {
-                // console.log("ONE FOR CLUBS")
-                closets[0].appendChild(e.target)
-                stopDrag(e, 766, 189, e.target.data.n === 1 ? "blank" : 0);
+            if (thisCard.s === "c") {
+                console.log("ONE FOR CLUBS")
+                clubsClos.push(e.target)
+                stopDrag(e, clubsCoords.x, clubsCoords.y, e.target.data.n === 1 ? "blank" : 0);
             }
 
-            if (thisCard.s === "h" && thisCard.n === heartClos?.length + 1) {
-                // console.log("ONE FOR HEARTS")
-                closets[2].appendChild(e.target)
-                stopDrag(e, 579, 154, e.target.data.n === 1 ? "blank" : 0);
+            if (thisCard.s === "h") {
+                console.log("ONE FOR HEARTS")
+                heartClos.push(e.target)
+                stopDrag(e, heartCoords.x, heartCoords.y, e.target.data.n === 1 ? "blank" : 0);
             }
 
         }
@@ -370,7 +391,9 @@ const Solitaire = () => {
 
         function stopDrag(e, lastPosX, lastPosY, closetStatus) {
 
-            // console.log("x: ", lastPosX, "y: ", lastPosY)
+            console.log("stop vals__ ", "x: ", lastPosX, "y: ", lastPosY)
+
+
             var accepterNode = null;
             var giverNode = lastLocation.id;
 
