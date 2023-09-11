@@ -17,7 +17,7 @@ const ad = { width: "300px", height: "80vh" }
 const gameWrapper1ad = { width: "calc(100vw - (332px + 32px))", borderRadius: "100px", height: "80vh" }
 const gameWrapper2ad = { width: "calc(100vw - (332px * 2))", borderRadius: "100px", height: "80vh" }
 
-const gameBoard1ad = { position: "absolute", left: "32px", width: "calc(100vw - (332px + 32px))", backgroundColor: "#57926b", borderRadius: "100px", height: "80vh", zIndex: "-5", boxShadow: "inset 0px 0px 40px 2px #000000", filter: "blur(1px)", border: "2px solid #DDB572", outline: "8px solid #403321" }
+const gameBoard1ad = { position: "absolute", left: "32px", width: "calc(100vw - (332px + 32px))", backgroundColor: "#57926b", borderRadius: "100px", height: "80vh", zIndex: "-5", boxShadow: "inset 0px 0px 40px 2px #000000", filter: "blur(1px)", border: "2px solid #DDB572", outline: "8px solid #403321", transform: "scale(1.02) translateY(-24px)" }
 const gameBoard2ad = { position: "absolute", left: "332px", width: "calc(100vw - (332px * 2))", backgroundColor: "#57926b", borderRadius: "100px", height: "80vh", zIndex: "-5", boxShadow: "inset 0px 0px 40px 2px #000000", filter: "blur(1px)", border: "2px solid #DDB572", outline: "8px solid #403321" }
 const logoDesign = { height: "60vh", position: "absolute", zIndex: "0", top: "50%", left: "50%", transform: "translateY(-50%) translateX(-50%)", filter: "blur(1px)", opacity: "0.8" }
 
@@ -49,9 +49,9 @@ const Layout = ({ children }) => {
         if (path === "/spider") {
             setNumAds(1)
         } else if (path.includes("/solitaire")) {
-            setNumAds(2)
+            setNumAds(1)
         } else {
-            setNumAds(2)
+            setNumAds(1)
         }
 
     })

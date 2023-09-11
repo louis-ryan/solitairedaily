@@ -54,12 +54,12 @@ body {
 
 
 .wrapper {
-	width: 1000px;
+	width: 1040px;
 	margin: -20px auto;
 }
 
 .column {
-	width: 100px;
+	width: 104px;
 	min-height: 120px;
 	padding-top: 40px;
 	float: left;
@@ -322,8 +322,8 @@ input[type=radio] {
 /*Cards style*/
 .card {
 	display: block;
-	width: 84px;
-	height: 116px;
+	width: 100px;
+	height: 145.2px;
 	margin: 0 auto;
 	border: 1px solid #000;
 	border-radius: 6px;
@@ -335,7 +335,7 @@ input[type=radio] {
 
 .column .card,
 .drag-el .card {
-	margin-top: -86px;
+	margin-top: -100px;
 }
 
 .drag-el {
@@ -345,29 +345,29 @@ input[type=radio] {
 
 
 .column[data-height="1"] .open {
-	margin-top: -90px;
+	margin-top: -84px;
 }
 
 
 .column[data-height="2"] .open {
-	margin-top: -94px;
+	margin-top: -92px;
 }
 
 .column[data-height="3"] .open {
-	margin-top: -98px;
+	margin-top: -100px;
 }
 
 .column[data-height="4"] .open {
-	margin-top: -102px;
+	margin-top: -108px;
 }
 
 .column[data-height="5"] .open {
-	margin-top: -106px;
+	margin-top: -116px;
 }
 
 .column .closed,
 .column .closed+.open {
-	margin-top: -100px;
+	margin-top: -124px;
 }
 
 .card.closed {
