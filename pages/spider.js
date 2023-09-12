@@ -403,7 +403,7 @@ export default function SpiderNew() {
                 if (dropout.children.length == 104) {
                     dealer.showCongratulation();
                     clearInterval(timeKeeper);
-                    UpdateScore();
+                    // UpdateScore();
                     bgSound = new Audio('audio/bg-music.mp3');
                     bgSound.addEventListener('ended', function () {
                         this.currentTime = 0;

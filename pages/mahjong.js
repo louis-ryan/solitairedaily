@@ -7,7 +7,7 @@ export default function Mahjong() {
 
     return (
         <Layout>
-            <div className="App">
+            <div className="App" style={{ marginLeft: "50%", transform: "translateX(-275px) translateY(100px)" }}>
                 <LayoutComponent></LayoutComponent>
             </div>
         </Layout>
