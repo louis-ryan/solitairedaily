@@ -11,7 +11,7 @@ const buttonStyle = { textAlign: "center", padding: "8px", cursor: "pointer", ma
 const bottomSectionWrapper = { width: "100%", display: "flex", filter: "blur(0.5)" }
 
 const adSpace = { width: "32px" }
-const adWrapper = { width: "332px", display: "flex", justifyContent: "center", alignItems: "center", border: "1px solid white", transform: "translateY(-24px)", borderRadius: "0px", overflow: "hidden" }
+const adWrapper = { width: "332px", display: "flex", justifyContent: "center", alignItems: "center", transform: "translateY(-24px)", borderRadius: "0px", overflow: "hidden" }
 const ad = { width: "300px", height: "80vh" }
 
 const gameWrapper1ad = { width: "calc(100vw - (332px + 32px))", borderRadius: "100px", height: "80vh" }
