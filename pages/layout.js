@@ -50,11 +50,19 @@ const Layout = ({ children }) => {
             setNumAds(1)
         } else if (path.includes("/solitaire")) {
             setNumAds(1)
+        } else if (path === "/privacy") {
+            setNumAds(0)
         } else {
             setNumAds(2)
         }
 
     })
+
+    if (numAds === 0) {
+        return (
+            <div>{children}</div>
+        );
+    }
 
     if (numAds === 1) {
         return (
